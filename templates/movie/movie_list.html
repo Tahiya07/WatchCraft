@@ -1,18 +1,44 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Movies - WatchCraft{% endblock %}
+{% block title %}All Movies - WatchCraft{% endblock %}
 
 {% block content %}
-<h1>🎥 Movies</h1>
+<div class="container mx-auto py-8 px-4">
 
-<div class="movie-list custom-scrollbar">
-    {% for movie in object_list %}
-    <div class="movie-card">
-        <h2><a href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h2>
-        <p>{{ movie.description|default:"No description available" }}</p>
+    <!-- Page Header -->
+    <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold gradient-text">All Movies</h1>
+        <p class="text-gray-400">{{ movies|length }} movies found</p>
     </div>
-    {% empty %}
-    <p>No movies found.</p>
-    {% endfor %}
+
+    <!-- Movie Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {% if movies %}
+            {% for movie in movies %}
+            <div class="bg-gray-900 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                {% if movie.poster_url %}
+                    <img src="{{ movie.poster_url }}" alt="{{ movie.title }}" class="w-full h-64 object-cover">
+                {% else %}
+                    <div class="w-full h-64 bg-gray-700 flex items-center justify-center text-gray-400">
+                        No Poster
+                    </div>
+                {% endif %}
+
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-1">{{ movie.title }}</h2>
+                    <p class="text-gray-400 text-sm mb-2">{{ movie.genre }} | {{ movie.release_year }}</p>
+                    <p class="text-gray-300 line-clamp-3 mb-2">{{ movie.description }}</p>
+                    <p class="text-yellow-400 font-medium mb-2">Rating: {{ movie.rating }}/10</p>
+                    <a href="{% url 'movie-detail' movie.id %}" class="text-indigo-500 hover:text-indigo-400 font-semibold">
+                        View Details &rarr;
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-gray-400 col-span-full">No movies available.</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
