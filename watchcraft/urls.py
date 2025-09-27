@@ -22,6 +22,7 @@ from reviews.views import ReviewListView, ReviewDetailView
 from recommendations.views import RecommendationListView
 from django.conf import settings
 from django.conf.urls.static import static
+from movies.views import AboutUsView, ContactView  # or from the existing views file
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,6 +40,8 @@ urlpatterns = [
 
     # Home page
     path('', MovieListView.as_view(), name='home'),
+    path('about/', AboutUsView.as_view(), name='about-us'),
+    path('contact/', ContactView.as_view(), name='contact'),
 ]
 
 if settings.DEBUG:
