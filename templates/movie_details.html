@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ object.title }} - WatchCraft{% endblock %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+<p>{{ object.description|default:"No description available" }}</p>
+
+<h2>Reviews</h2>
+<div class="movie-list custom-scrollbar">
+    {% for review in object.review_set.all %}
+    <div class="movie-card">
+        <p><strong>{{ review.user.username }}:</strong> {{ review.comment|default:review.content }}</p>
+        <p>Rating: {{ review.rating }}/5</p>
+    </div>
+    {% empty %}
+    <p>No reviews yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}
