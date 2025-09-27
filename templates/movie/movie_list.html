@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Movies - WatchCraft{% endblock %}
+
+{% block content %}
+<h1>🎥 Movies</h1>
+
+<div class="movie-list custom-scrollbar">
+    {% for movie in object_list %}
+    <div class="movie-card">
+        <h2><a href="{% url 'movie-detail' movie.id %}">{{ movie.title }}</a></h2>
+        <p>{{ movie.description|default:"No description available" }}</p>
+    </div>
+    {% empty %}
+    <p>No movies found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
