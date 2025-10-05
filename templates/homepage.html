@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Home - WatchCraft{% endblock %}
 
 {% block content %}
+
 <h1>Movie List</h1>
 <div class="movie-list custom-scrollbar">
     {% for movie in object_list %}

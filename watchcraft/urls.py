@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-# from django.contrib import admin
+from django.urls import path, include
 from django.contrib import admin
 from django.urls import path
 from movies.views import MovieListView, MovieDetailView
@@ -42,6 +42,9 @@ urlpatterns = [
     path('', MovieListView.as_view(), name='home'),
     path('about/', AboutUsView.as_view(), name='about-us'),
     path('contact/', ContactView.as_view(), name='contact'),
+
+    #User
+    path('users/', include('users.urls')),
 ]
 
 if settings.DEBUG:
