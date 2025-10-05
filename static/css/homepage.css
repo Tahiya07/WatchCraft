@@ -1,0 +1,40 @@
+.auth-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.auth-btn {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+/* Purple Glass Style */
+.login-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.login-btn:hover {
+  background: rgba(186, 125, 255, 0.25);
+  box-shadow: 0 0 10px rgba(193, 128, 255, 0.4);
+}
+
+.signup-btn {
+  background: linear-gradient(90deg, #a56dff, #c08aff);
+  color: #fff;
+  border: none;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(90deg, #c08aff, #e5b8ff);
+  box-shadow: 0 0 10px rgba(220, 164, 255, 0.6);
+}

@@ -30,7 +30,7 @@ def signup_view(request):
             return redirect('homepage')  # redirect to homepage or dashboard
     else:
         form = SignUpForm()
-    return render(request, 'movie/signup.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})
 
 
 def login_view(request):
@@ -48,7 +48,7 @@ def login_view(request):
                 messages.error(request, 'Invalid username or password')
     else:
         form = LoginForm()
-    return render(request, 'movie/login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 
 def logout_view(request):
