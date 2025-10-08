@@ -2,52 +2,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}WatchCraft{% endblock %}</title>
-    <!-- Load CSS -->
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}WatchCraft{% endblock %}</title>
 
+  <!-- Load global CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+  <!-- Allow child templates (like Homepage.html) to inject their own CSS -->
+  {% block head %}{% endblock %}
 </head>
+
 <body class="custom-scrollbar">
 
-    <!-- Navbar -->
-    <header>
-        <div class="logo">🎬 WatchCraft</div>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'movie-list' %}">Movies</a>
-            <a href="{% url 'about-us' %}">About Us</a>
-            <a href="{% url 'contact' %}">Contact</a>
-        </nav>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">🎬 WatchCraft</div>
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'movie-list' %}">Movies</a>
+      <a href="{% url 'about-us' %}">About Us</a>
+      <a href="{% url 'contact' %}">Contact</a>
+    </nav>
 
-        <div class="auth-links">
-            {% if user.is_authenticated %}
-                <span class="welcome-text">Hi, {{ user.username }} 👋</span>
-                <a href="{% url 'logout' %}" class="auth-btn logout-btn">Logout</a>
-            {% else %}
-                <a href="{% url 'login' %}" class="auth-btn login-btn">Login</a>
-                <a href="{% url 'signup' %}" class="auth-btn signup-btn">Sign Up</a>
-            {% endif %}
-        </div>
+    <div class="auth-links">
+      {% if user.is_authenticated %}
+        <span class="welcome-text">Hi, {{ user.username }} 👋</span>
+        <a href="{% url 'logout' %}" class="auth-btn logout-btn">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="auth-btn login-btn">Login</a>
+        <a href="{% url 'signup' %}" class="auth-btn signup-btn">Sign Up</a>
+      {% endif %}
+    </div>
 
-        <button class="toggle-btn" id="theme-toggle">🌙</button>
-    </header>
+    <button class="toggle-btn" id="theme-toggle">🌙</button>
+  </header>
 
-    <!-- Main Content -->
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        &copy; 2025 WatchCraft. All rights reserved.
-        <a href="{% url 'about-us' %}">About Us</a> |
-        <a href="{% url 'contact' %}">Contact</a>
-    </footer>
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 WatchCraft. All rights reserved.
+    <a href="{% url 'about-us' %}">About Us</a> |
+    <a href="{% url 'contact' %}">Contact</a>
+  </footer>
 
-    <!-- JS -->
-    <script src="{% static 'js/main.js' %}"></script>
-
+  <!-- JS -->
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

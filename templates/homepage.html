@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}Home - WatchCraft{% endblock %}
+
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<h1>Movie List</h1>
-<div class="movie-list custom-scrollbar">
-    {% for movie in object_list %}
-    <div class="movie-card"> <h2>{{ movie.title }}</h2>
-        <p>{{ movie.description|default:"No description available" }}</p>
-    </div> {% empty %}
-    <p>No movies found.</p>
-    {% endfor %}
-</div>
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>YOUR NEXT <span>BINGE</span>,<br>BRILLIANTLY ORGANIZED</h1>
+    <p>
+      Meet your new movie sidekick. Effortlessly track, discover, and share what you want to watch—
+      no more endless scrolling. Dive into a smarter, more fun way to manage your watchlist and get
+      spot-on recommendations, all in one place.
+    </p>
+  </div>
+</section>
 {% endblock %}

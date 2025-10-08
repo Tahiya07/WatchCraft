@@ -1,0 +1,96 @@
+/* ===== Base Reset ===== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  background: linear-gradient(to bottom right, #1a001f, #3b0069, #7a00b3);
+}
+
+/* ===== Hero Section ===== */.hero-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8rem 6rem;
+  min-height: 100vh;
+  overflow: hidden;
+
+  /* Layered violet curtain effect */
+  background: linear-gradient(to bottom, #000 0%, #320046 50%, #8b00e8 100%);
+
+}
+
+
+/* Overlay light stripes */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.15) 0px,   /* stripe color & opacity */
+    rgba(255, 255, 255, 0.15) 6px,   /* stripe width */
+    transparent 80px                  /* gap between stripes */
+  );
+  mix-blend-mode: overlay;
+}
+
+
+
+
+/* ===== Hero Content ===== */
+.hero-content {
+  max-width: 700px;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #e8d9ff;
+  letter-spacing: 1px;
+}
+
+.hero-content h1 span {
+  color: #bb77ff;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: #e6d6ff;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* ===== Layout ===== */
+main {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===== Footer ===== */
+footer {
+  margin: 0;
+  padding: 10px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 2rem;
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  }
+}

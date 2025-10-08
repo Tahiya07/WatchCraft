@@ -1,0 +1,189 @@
+/* --- Global Reset & Typography --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+html {
+  background: #ffffff;
+  color: #030213;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+/* --- Dark Theme --- */
+html.dark {
+  background: #0f1419;
+  color: #e8e8f0;
+}
+
+/* --- Layout --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #030213;
+  color: white;
+}
+
+header .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* --- Movie List --- */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.movie-card {
+  background: #f3f3f5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+html.dark .movie-card {
+  background: #1a2330;
+}
+
+/* --- Buttons --- */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #a855f7;
+  color: white;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #9333ea;
+}
+
+/* --- Custom Scrollbar --- */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #f3f3f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 3px;
+}
+
+/* --- Dark Theme Button --- */
+.toggle-btn {
+  background: #030213;
+  color: white;
+  border: 1px solid white;
+}
+
+/* --- Footer --- */
+footer.footer {
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--sidebar-border);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+footer.footer a {
+  color: var(--accent-foreground);
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer.footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Auth buttons container --- */
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.welcome-text {
+  color: #e4d3ff;
+  font-size: 0.95rem;
+  margin-right: 0.5rem;
+}
+
+/* --- Auth buttons --- */
+.auth-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+/* Login button (glass effect) */
+.login-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.login-btn:hover {
+  background: rgba(190, 120, 255, 0.25);
+  box-shadow: 0 0 8px rgba(190, 120, 255, 0.4);
+}
+
+/* Sign Up button (purple gradient) */
+.signup-btn {
+  background: linear-gradient(90deg, #a56dff, #c08aff);
+  color: #fff;
+  border: none;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(90deg, #c08aff, #e5b8ff);
+  box-shadow: 0 0 10px rgba(220, 164, 255, 0.6);
+}
+
+/* Logout button (softer purple) */
+.logout-btn {
+  background: rgba(180, 120, 255, 0.2);
+  border: 1px solid rgba(220, 170, 255, 0.3);
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background: rgba(220, 170, 255, 0.3);
+  box-shadow: 0 0 8px rgba(220, 170, 255, 0.5);
+}
