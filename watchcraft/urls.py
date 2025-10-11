@@ -28,6 +28,7 @@ from movies.views import AboutUsView, ContactView  # or from the existing views 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+
     # Movies
     path('movies/', MovieListView.as_view(), name='movie-list'),
     path('movies/<int:pk>/', MovieDetailView.as_view(), name='movie-detail'),
