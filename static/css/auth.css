@@ -1,32 +1,76 @@
-/* Page wrapper */
-.auth-wrapper {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #3d0b69, #5f2a88, #9b4de0);
-  background-size: 300% 300%;
-  animation: gradientShift 12s ease infinite;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-y: auto;
+  background: linear-gradient(to bottom, #000 0%, #320046 50%, #8b00e8 100%);
 }
 
-/* Card container */
+/* Page wrapper */
+.auth-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* stack card and footer */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 2rem; /* optional spacing for card */
+  box-sizing: border-box;
+}
+
+/* Overlay light stripes */
+.auth-wrapper::before {
+  content: "";
+  position: fixed; /* fixed ensures it covers full viewport even when scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.15) 0px,
+    rgba(255, 255, 255, 0.15) 6px,
+    transparent 80px
+  );
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+.auth-wrapper.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.auth-wrapper.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 3px;
+}
+/* Frosted glass card */
 .auth-card {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 420px;
   padding: 2.5rem 2rem;
   border-radius: 1.5rem;
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   color: #fff;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease;
+  margin-bottom: 2rem; /* space for footer */
 }
 
 .auth-card:hover {
   transform: translateY(-4px);
 }
+
 
 /* Title */
 .auth-title {
@@ -82,10 +126,12 @@
   box-shadow: 0 0 15px rgba(197, 143, 255, 0.6);
 }
 
-/* Footer link */
+/* Footer */
 .auth-footer {
-  margin-top: 1.2rem;
+  z-index: 1;
   font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .auth-footer a {
@@ -109,4 +155,40 @@
   100% {
     background-position: 0% 50%;
   }
+}
+.messages {
+  margin: 1rem auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 600px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.success {
+  background: rgba(167, 96, 255, 0.15);
+  border: 1px solid rgba(167, 96, 255, 0.3);
+  color: #cbaaff;
+}
+
+.message.error {
+  background: rgba(255, 0, 76, 0.1);
+  border: 1px solid rgba(255, 0, 76, 0.3);
+  color: #ff7b9e;
+}
+
+/* --- Custom Scrollbar --- */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #f3f3f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 3px;
 }

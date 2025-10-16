@@ -132,3 +132,5 @@ h1,h2,h3,h4,h5,h6 {
 .wave-hover::after {background:linear-gradient(-45deg,transparent 30%,rgba(168,85,247,0.2) 50%,rgba(236,72,153,0.2) 70%,transparent);transform:translateX(100%) translateY(-100%) rotate(12deg);z-index:1;}
 .wave-hover:hover::before {animation: wave-flow 1.2s ease-in-out;}
 .wave-hover:hover::after {animation: wave-flow-reverse 1.2s ease-in-out 0.3s;}
+
+

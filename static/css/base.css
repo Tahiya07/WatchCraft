@@ -107,26 +107,45 @@ button:hover {
   border: 1px solid white;
 }
 
-/* --- Footer --- */
-footer.footer {
-  background: var(--sidebar);
-  color: var(--sidebar-foreground);
-  padding: 1rem 2rem;
-  text-align: center;
-  border-top: 1px solid var(--sidebar-border);
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-footer.footer a {
-  color: var(--accent-foreground);
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  margin: 0 0.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1); /* frosted glass inside */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-weight: 500;
   text-decoration: none;
-  margin: 0 0.5rem;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-footer.footer a:hover {
-  text-decoration: underline;
+/* Gradient border */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 2px; /* border thickness */
+  border-radius: 20px; /* same as button */
+  background: linear-gradient(90deg, #a56dff, #e3b4ff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude; /* keeps inner area transparent */
+  z-index: -1;
 }
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(197, 143, 255, 0.4);
+}
+
 
 /* --- Auth buttons container --- */
 .auth-links {
@@ -186,4 +205,57 @@ footer.footer a:hover {
 .logout-btn:hover {
   background: rgba(220, 170, 255, 0.3);
   box-shadow: 0 0 8px rgba(220, 170, 255, 0.5);
+}
+.messages {
+  margin: 1rem auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 600px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.success {
+  background: rgba(167, 96, 255, 0.15);
+  border: 1px solid rgba(167, 96, 255, 0.3);
+  color: #cbaaff;
+}
+
+.message.error {
+  background: rgba(255, 0, 76, 0.1);
+  border: 1px solid rgba(255, 0, 76, 0.3);
+  color: #ff7b9e;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #320046, #8b00e8); /* stylish gradient */
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  position: relative; /* or fixed/bottom if you want it always visible */
+  z-index: 10;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer links */
+.footer a {
+  color: #e3b4ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.3rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Optional: stick footer to bottom of viewport */
+.footer.sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }

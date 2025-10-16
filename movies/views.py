@@ -1,27 +1,28 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.views.generic import ListView, DetailView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import View
 from .models import Movie
 
-from django.views.generic import ListView
-from .models import Movie
+# Combined Movie List & Detail View
+class MovieView(View):
+    template_name = "movies.html"  # The combined template
 
-class MovieListView(ListView):
-    model = Movie
-    template_name = "movie/movie_list.html"  # match the path exactly
+    def get(self, request, pk=None):
+        if pk:
+            # Detail view
+            movie = get_object_or_404(Movie, pk=pk)
+            context = {'movie': movie}
+        else:
+            # List view
+            movies = Movie.objects.all()
+            context = {'object_list': movies}
+        return render(request, self.template_name, context)
 
 
-class MovieDetailView(DetailView):
-    model = Movie
-    template_name = 'movie_detail.html'
-    context_object_name = 'movie'
-from django.shortcuts import render
-from django.views import View
-
+# Other static pages
 class AboutUsView(View):
     def get(self, request):
         return render(request, 'about_us.html')
+
 
 class ContactView(View):
     def get(self, request):

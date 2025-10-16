@@ -7,6 +7,7 @@
   <title>{% block title %}WatchCraft{% endblock %}</title>
 
   <!-- Load global CSS -->
+
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
   <!-- Allow child templates (like Homepage.html) to inject their own CSS -->
@@ -18,11 +19,11 @@
   <!-- Navbar -->
   <header>
     <div class="logo">🎬 WatchCraft</div>
-    <nav>
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'movie-list' %}">Movies</a>
-      <a href="{% url 'about-us' %}">About Us</a>
-      <a href="{% url 'contact' %}">Contact</a>
+    <nav class="navbar">
+      <a href="{% url 'home' %}" class="nav-link">Home</a>
+      <a href="{% url 'movie-list' %}" class="nav-link">Movies</a>
+      <a href="{% url 'about-us' %}" class="nav-link">About Us</a>
+      <a href="{% url 'contact' %}" class="nav-link">Contact</a>
     </nav>
 
     <div class="auth-links">
@@ -35,12 +36,20 @@
       {% endif %}
     </div>
 
-    <button class="toggle-btn" id="theme-toggle">🌙</button>
   </header>
 
   <!-- Main Content -->
   <main>
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+    {% endblock %}
   </main>
 
   <!-- Footer -->
@@ -50,7 +59,6 @@
     <a href="{% url 'contact' %}">Contact</a>
   </footer>
 
-  <!-- JS -->
-  <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>
