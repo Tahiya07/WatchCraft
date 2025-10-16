@@ -12,11 +12,14 @@ class MovieView(View):
             movie = get_object_or_404(Movie, pk=pk)
             context = {'movie': movie}
         else:
-            # List view
-            movies = Movie.objects.all()
-            context = {'object_list': movies}
+            # List view with search
+            query = request.GET.get('q')  # get search term from input
+            if query:
+                movies = Movie.objects.filter(title__icontains=query)
+            else:
+                movies = Movie.objects.all()
+            context = {'object_list': movies, 'search_query': query or ''}
         return render(request, self.template_name, context)
-
 
 # Other static pages
 class AboutUsView(View):
