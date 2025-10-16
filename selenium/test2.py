@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 # Open login page
-driver.get("http://127.0.0.1:8000/users/login/")  # change to your actual login URL
+driver.get("http://127.0.0.1:8000/users/login/")
 
 # Wait until the username field appears
 WebDriverWait(driver, 10).until(
