@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'movies',
     'reviews',
     'recommendations',
+
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Dhaka'
@@ -109,3 +111,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
