@@ -121,3 +121,151 @@
       </div>
     </div>
   </div>
+
+<script>
+   const movies = [
+  {
+    title: "Wednesday",
+    year: 2025,
+    genre: "Action",
+    rating: 9,
+    description: "Wednesday is an American comedy horror television series based upon the character Wednesday Addams from The Addams Family.",
+    poster: "https://m.media-amazon.com/images/I/81zM3vKxJjL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787837.jpg')"
+  },
+  {
+    title: "The Nun",
+    year: 2019,
+    genre: "Horror",
+    rating: 7,
+    description: "A chilling tale from the Conjuring universe.",
+    poster: "https://m.media-amazon.com/images/I/81Nf+ZzGJrL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787835.jpg')"
+  },
+  {
+    title: "Robert: Rebirthsoon",
+    year: 2025,
+    genre: "Action",
+    rating: 7,
+    description: "A mysterious action thriller set in a dystopian future.",
+    poster: "https://m.media-amazon.com/images/I/71qkRzv1ZDL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787836.jpg')"
+  },
+  {
+    title: "Animal",
+    year: 2025,
+    genre: "Action",
+    rating: 8,
+    description: "A high-octane drama exploring rage and redemption.",
+    poster: "https://m.media-amazon.com/images/I/81zM3vKxJjL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787838.jpg')"
+  },
+  {
+    title: "Parasite",
+    year: 2019,
+    genre: "Thriller",
+    rating: 8.6,
+    description: "A darkly comedic thriller exploring class conflict in South Korea.",
+    poster: "https://m.media-amazon.com/images/I/91zLzXjKQ-L._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787839.jpg')"
+  },
+  {
+    title: "Avengers: Endgame",
+    year: 2019,
+    genre: "Superhero",
+    rating: 8.4,
+    description: "The epic conclusion to the Infinity Saga.",
+    poster: "https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787840.jpg')"
+  },
+  {
+    title: "Titanic",
+    year: 1997,
+    genre: "Romance",
+    rating: 7.8,
+    description: "A tragic love story set aboard the ill-fated RMS Titanic.",
+    poster: "https://m.media-amazon.com/images/I/71c05lTE03L._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787841.jpg')"
+  },
+  {
+    title: "The Matrix",
+    year: 1999,
+    genre: "Sci-Fi",
+    rating: 8.7,
+    description: "A hacker discovers the truth about reality and joins a rebellion.",
+    poster: "https://m.media-amazon.com/images/I/51EG732BV3L._AC_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787842.jpg')"
+  },
+  {
+    title: "Harry Potter and the Sorcerer's Stone",
+    year: 2001,
+    genre: "Fantasy",
+    rating: 7.6,
+    description: "A young wizard discovers his magical heritage and attends Hogwarts.",
+    poster: "https://m.media-amazon.com/images/I/81t2CVWEsUL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787843.jpg')"
+  },
+  {
+    title: "Shutter Island",
+    year: 2010,
+    genre: "Mystery",
+    rating: 8.2,
+    description: "A U.S. Marshal investigates a psychiatric facility on a remote island.",
+    poster: "https://m.media-amazon.com/images/I/81V+ZkU3TPL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787844.jpg')"
+  },
+  {
+    title: "La La Land",
+    year: 2016,
+    genre: "Musical",
+    rating: 8.0,
+    description: "A jazz musician and aspiring actress fall in love in Los Angeles.",
+    poster: "https://m.media-amazon.com/images/I/81xTx-LvY-L._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787845.jpg')"
+  },
+  {
+    title: "Frozen",
+    year: 2013,
+    genre: "Animation",
+    rating: 7.5,
+    description: "Two sisters discover the power of love and magic in Arendelle.",
+    poster: "https://m.media-amazon.com/images/I/71aLultW5EL._AC_SY679_.jpg",
+    background: "url('https://wallpapercave.com/wp/wp11787846.jpg')"
+  }
+];
+
+    const movieList = document.getElementById('movieList');
+    const movieDetails = document.getElementById('movieDetails');
+
+    movies.forEach(movie => {
+      const item = document.createElement('div');
+      item.className = 'movie-item';
+      item.innerHTML = `
+        <img src="${movie.poster}" alt="${movie.title} Poster">
+        <div>
+          <strong>${movie.title}</strong><br>
+          <small>${movie.genre} • ${movie.year} • ⭐ ${movie.rating}</small>
+        </div>
+      `;
+      item.addEventListener('click', () => showDetails(movie));
+      movieList.appendChild(item);
+    });
+
+    function showDetails(movie) {
+      movieDetails.style.backgroundImage = movie.background;
+      movieDetails.innerHTML = `
+        <div class="overlay">
+          <h1>${movie.title}</h1>
+          <p><strong>Genre:</strong> ${movie.genre}</p>
+          <p><strong>Year:</strong> ${movie.year}</p>
+          <p><strong>Rating:</strong> ${movie.rating}</p>
+          <p>${movie.description}</p>
+        </div>
+      `;
+    }
+
+    // Show first movie by default
+    showDetails(movies[0]);
+  </script>
+</body>
+</html>
