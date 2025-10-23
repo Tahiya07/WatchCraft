@@ -29,6 +29,7 @@ urlpatterns = [
 
     # User URLs
     path('users/', include('users.urls')),
+    path('list/', views.movie_list, name='list'),
 ]
 
 # Serve static files during development
