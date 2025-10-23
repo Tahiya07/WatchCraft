@@ -18,6 +18,58 @@
       no more endless scrolling. Dive into a smarter, more fun way to manage your watchlist and get
       spot-on recommendations, all in one place.
     </p>
+   <a href="/movies" class="frosted-btn">See More</a>
+
   </div>
 </section>
+
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="carousel-item">🎬 1</div>
+      <div class="carousel-item">🎞️ 2</div>
+      <div class="carousel-item">🍿 3</div>
+      <div class="carousel-item">🎥 4</div>
+      <div class="carousel-item">📽️ 5</div>
+    </div>
+  </div>
+
+  <script>
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    const radius = 500;
+    let angle = 0;
+    let startX = 0;
+    let currentAngle = 0;
+
+    function positionItems() {
+      const step = 360 / items.length;
+      items.forEach((item, i) => {
+        const itemAngle = i * step + angle;
+        item.style.transform = `
+          rotateY(${itemAngle}deg)
+          translateZ(${radius}px)
+        `;
+      });
+    }
+
+    carousel.addEventListener('pointerdown', (e) => {
+      startX = e.clientX;
+      carousel.setPointerCapture(e.pointerId);
+    });
+
+    carousel.addEventListener('pointermove', (e) => {
+      if (e.pressure > 0) {
+        const deltaX = e.clientX - startX;
+        angle = currentAngle + deltaX * 0.3;
+        positionItems();
+      }
+    });
+
+    carousel.addEventListener('pointerup', (e) => {
+      currentAngle = angle;
+      carousel.releasePointerCapture(e.pointerId);
+    });
+
+    positionItems();
+  </script>
 {% endblock %}

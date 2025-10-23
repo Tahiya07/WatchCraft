@@ -46,7 +46,12 @@ html, body {
 .hero-content {
   max-width: 700px;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem; /* creates natural space between heading, paragraph, and button */
 }
+
 
 .hero-content h1 {
   font-size: 4rem;
@@ -94,3 +99,59 @@ footer {
     font-size: 1rem;
   }
 }
+.frosted-btn {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid transparent;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+ background: linear-gradient(90deg, #a56dff, #c08aff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+.frosted-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(180, 0, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);}
+
+     .carousel-container {
+      perspective: 1000px;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 300px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    .carousel-item {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      top: 0;
+      left: 50%;
+      transform-origin: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
