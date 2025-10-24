@@ -63,27 +63,36 @@ document.querySelectorAll('.rating-form').forEach(form => {
     });
   });
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const movieId = form.getAttribute('data-movie-id');
-    const rating = ratingInput.value;
-    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+ form.addEventListener('submit', function(e) {
+  e.preventDefault();
 
-    fetch(`/reviews/submit/${movieId}/`, {
-      method: 'POST',
-     headers: {
-  'Content-Type': 'application/json',
-  'X-CSRFToken': csrfToken
-},
-      body: JSON.stringify({ rating: rating })
-    })
-    .then(response => {
-      if (response.ok) {
-        alert('Thanks for rating!');
-      } else {
-        alert('Something went wrong.');
-      }
-    });
+  const movieId = form.getAttribute('data-movie-id');
+  const rating = ratingInput.value;
+  const comment = form.querySelector('textarea[name="comment"]').value.trim();
+  const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  console.log("Submitting comment:", comment); // ✅ Confirm it's captured
+
+  fetch(`/reviews/submit/${movieId}/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrfToken
+    },
+    body: JSON.stringify({ rating: rating, comment: comment })
+  })
+  .then(response => {
+    if (response.ok) {
+      alert('Thanks for rating!');
+      form.reset(); // Optional: clear form after submission
+    } else {
+      alert('Something went wrong.');
+    }
+  })
+  .catch(error => {
+    console.error("Error submitting review:", error);
+    alert("Submission failed.");
   });
 });
+ });
 
