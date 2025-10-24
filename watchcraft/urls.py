@@ -18,6 +18,7 @@ urlpatterns = [
     # Reviews
     path('reviews/', ReviewListView.as_view(), name='review-list'),
     path('reviews/<int:pk>/', ReviewDetailView.as_view(), name='review-detail'),
+path('reviews/', include('reviews.urls')),
 
     # Recommendations
     path('recommendations/', RecommendationListView.as_view(), name='recommendation-list'),
@@ -30,6 +31,7 @@ urlpatterns = [
     # User URLs
     path('users/', include('users.urls')),
     path('list/', views.movie_list, name='list'),
+
 ]
 
 # Serve static files during development

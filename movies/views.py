@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
 from .models import Movie
+from reviews.models import Review
 
 # Combined Movie List & Detail View
 class MovieView(View):
@@ -8,9 +9,12 @@ class MovieView(View):
 
     def get(self, request, pk=None):
         if pk:
-            # Detail view
             movie = get_object_or_404(Movie, pk=pk)
-            context = {'movie': movie}
+            reviews = Review.objects.filter(movie=movie).order_by('-created_at')
+            context = {
+                'movie': movie,
+                'reviews': reviews
+            }
         else:
             # List view with search
             query = request.GET.get('q')  # get search term from input

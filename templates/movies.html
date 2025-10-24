@@ -25,9 +25,7 @@
                 {% if movie.poster_url %}
                     <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
                 {% else %}
-                    <div class="no-poster">
-                        No Poster
-                    </div>
+                    <div class="no-poster">No Poster</div>
                 {% endif %}
             </div>
 
@@ -36,7 +34,15 @@
                 <h1>{{ movie.title }}</h1>
                 <p>{{ movie.genre }} | {{ movie.release_year }}</p>
                 <p>{{ movie.description }}</p>
-                <p>Rating: {{ movie.rating }}/10</p>
+
+                <!-- Average Rating -->
+                {% with avg=movie.get_average_rating %}
+                    {% if avg %}
+                        <p>Average Rating: {{ avg }}/5</p>
+                    {% else %}
+                        <p>No ratings yet.</p>
+                    {% endif %}
+                {% endwith %}
 
                 <!-- Reviews -->
                 <div class="reviews">
@@ -46,8 +52,25 @@
                             {% for review in movie.review_set.all %}
                                 <li>
                                     <p><strong>{{ review.user.username }}:</strong></p>
-                                    <p>{{ review.comment }}</p>
-                                    <p>Rating: {{ review.rating }}/10</p>
+
+                                    <!-- Star Rating -->
+                                    <p>
+                                        {% for i in "12345"|make_list %}
+                                            {% if review.rating|add:"0" >= i|add:"0" %}
+                                                <span class="star filled">★</span>
+                                            {% else %}
+                                                <span class="star">☆</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <span class="numeric-rating">({{ review.rating }}/5)</span>
+                                    </p>
+
+                                    <!-- Review Comment -->
+                                    {% if review.comment %}
+                                        <p>{{ review.comment }}</p>
+                                    {% else %}
+                                        <p><em>No comment provided.</em></p>
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                         </ul>
@@ -56,7 +79,6 @@
                     {% endif %}
                 </div>
             </div>
-
         </div>
 
         <!-- Back Button -->
@@ -71,20 +93,18 @@
         <h2>🎥 Movies</h2>
 
         <!-- Search Bar -->
-<div class="search-bar">
-    <form method="get" action="{% url 'movie-list' %}" class="flex w-full gap-2">
-        <input type="text" name="q" placeholder="Search movies..."
-               class="input" value="{{ search_query }}">
-        <button type="submit" class="btn">Search</button>
-    </form>
-</div>
-
+        <div class="search-bar">
+            <form method="get" action="{% url 'movie-list' %}" class="flex w-full gap-2">
+                <input type="text" name="q" placeholder="Search movies..."
+                       class="input" value="{{ search_query }}">
+                <button type="submit" class="btn">Search</button>
+            </form>
+        </div>
 
         <!-- Grid View -->
         <div class="movies-grid">
             {% for movie in object_list %}
                 <div class="movie-card">
-
                     {% if movie.poster_url %}
                         <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
                     {% else %}

@@ -139,6 +139,25 @@ input.input::placeholder {
         flex: 1;
     }
 }
+.star {
+  color: #ccc;
+  font-size: 1.2rem;
+  margin-right: 2px;
+}
+.star.filled {
+  color: gold;
+}
+.numeric-rating {
+  margin-left: 6px;
+  font-weight: bold;
+  color: #444;
+}
+.review-list li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
 
 /* Optional: subtle body background for dark theme */
 body {
