@@ -41,7 +41,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'watchcraft.urls'
+ROOT_URLCONF = 'WatchCraft.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'watchcraft.wsgi.application'
+WSGI_APPLICATION = 'WatchCraft.wsgi.application'
 
 
 # Database
