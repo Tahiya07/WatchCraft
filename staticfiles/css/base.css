@@ -1,0 +1,319 @@
+/* --- Global Reset & Typography --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+html {
+  background: #ffffff;
+  color: #030213;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+}
+
+/* --- Dark Theme --- */
+html.dark {
+  color: #e8e8f0;
+  height: 100%;
+}
+footer {
+  background: rgba(60, 0, 70, 0.4);
+  color: #ccc;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(180, 120, 220, 0.3);
+}
+
+/* --- Layout --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  color: white;
+}
+
+header .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* --- Movie List --- */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.movie-card {
+  background: #f3f3f5;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+html.dark .movie-card {
+  background: #1a2330;
+}
+
+/* --- Buttons --- */
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #a855f7;
+  color: white;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #9333ea;
+}
+
+/* --- Custom Scrollbar --- */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #a855f7 #f3f3f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #a855f7;
+  border-radius: 3px;
+}
+
+/* --- Dark Theme Button --- */
+.toggle-btn {
+  background: #030213;
+  color: white;
+  border: 1px solid white;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  margin: 0 0.8rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1); /* frosted glass inside */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Gradient border */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 2px; /* border thickness */
+  border-radius: 20px; /* same as button */
+  background: linear-gradient(90deg, #a56dff, #e3b4ff);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude; /* keeps inner area transparent */
+  z-index: -1;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(197, 143, 255, 0.4);
+}
+
+
+/* --- Auth buttons container --- */
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.welcome-text {
+  color: #e4d3ff;
+  font-size: 0.95rem;
+  margin-right: 0.5rem;
+}
+
+/* --- Auth buttons --- */
+.auth-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+/* Login button (glass effect) */
+.login-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.login-btn:hover {
+  background: rgba(190, 120, 255, 0.25);
+  box-shadow: 0 0 8px rgba(190, 120, 255, 0.4);
+}
+
+/* Sign Up button (purple gradient) */
+.signup-btn {
+  background: linear-gradient(90deg, #a56dff, #c08aff);
+  color: #fff;
+  border: none;
+}
+
+.signup-btn:hover {
+  background: linear-gradient(90deg, #c08aff, #e5b8ff);
+  box-shadow: 0 0 10px rgba(220, 164, 255, 0.6);
+}
+
+/* Logout button (softer purple) */
+.logout-btn {
+  background: rgba(180, 120, 255, 0.2);
+  border: 1px solid rgba(220, 170, 255, 0.3);
+  color: #fff;
+}
+
+.logout-btn:hover {
+  background: rgba(220, 170, 255, 0.3);
+  box-shadow: 0 0 8px rgba(220, 170, 255, 0.5);
+}
+.messages {
+  margin: 1rem auto;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  width: fit-content;
+  max-width: 600px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.message.success {
+  background: rgba(167, 96, 255, 0.15);
+  border: 1px solid rgba(167, 96, 255, 0.3);
+  color: #cbaaff;
+}
+
+.message.error {
+  background: rgba(255, 0, 76, 0.1);
+  border: 1px solid rgba(255, 0, 76, 0.3);
+  color: #ff7b9e;
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  background: linear-gradient(90deg, #320046, #8b00e8);
+  color: #fff;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: auto; /* ✅ pushes it to the bottom */
+}
+
+
+/* Footer links */
+.footer a {
+  color: #e3b4ff;
+  text-decoration: none;
+  font-weight: 500;
+  margin: 0 0.3rem;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+.logo-text-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.gradient-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(
+    180deg,
+    #D9B5FF 0%,    /* soft lavender starts at the top */
+    #D9B5FF 30%,   /* extend lavender to 40% for more visibility */
+    #9C6EBB 50%,   /* transition into rich purple */
+    #440557 100%   /* finish with deep plum */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-links {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+.svg-footer {
+  width: 100%;
+  height: auto;
+  background-color: #000; /* fallback */
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+}
+
+.svg-footer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
