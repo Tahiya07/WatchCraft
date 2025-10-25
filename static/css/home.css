@@ -14,18 +14,20 @@ html, body {
   padding: 6rem 4rem;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .hero-inner {
   display: flex;
+  flex-direction: row; /* ✅ horizontal layout */
   justify-content: space-between;
   align-items: flex-start;
   gap: 4rem;
   width: 100%;
   max-width: 1600px;
 }
+
 
 /* ===== Hero Content ===== */
 .hero-content {
@@ -94,9 +96,9 @@ html, body {
 .carousel-wrapper {
   flex: 1;
   max-width: 800px;
+  min-width: 300px;
   overflow: hidden;
 }
-
 .carousel {
   overflow-x: scroll;
   scroll-behavior: smooth;
