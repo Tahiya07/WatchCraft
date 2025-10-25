@@ -19,7 +19,6 @@ h1, h2, h3, h4 {
 
 /* --- Dark Theme --- */
 html.dark {
-  background: #0f1419;
   color: #e8e8f0;
   height: 100%;
 }
@@ -37,7 +36,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #030213;
+
   color: white;
 }
 
@@ -261,9 +260,60 @@ button:hover {
   text-decoration: underline;
 }
 
-/* Optional: stick footer to bottom of viewport */
-.footer.sticky {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+
+.logo-text-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+}
+
+.gradient-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(
+    180deg,
+    #D9B5FF 0%,    /* soft lavender starts at the top */
+    #D9B5FF 30%,   /* extend lavender to 40% for more visibility */
+    #9C6EBB 50%,   /* transition into rich purple */
+    #440557 100%   /* finish with deep plum */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.footer-links {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+.svg-footer {
+  width: 100%;
+  height: auto;
+  background-color: #000; /* fallback */
+  overflow: hidden;
+  text-align: center;
+  padding: 0;
+}
+
+.svg-footer img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }

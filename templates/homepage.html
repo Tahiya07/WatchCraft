@@ -10,19 +10,29 @@
 {% endblock %}
 
 {% block content %}
+<div class="svg-backgrounds">
+  <img src="{% static 'img/bg-1.svg' %}" class="bg-svg active">
+  <img src="{% static 'img/bg2.svg' %}" class="bg-svg">
+  <img src="{% static 'img/bg3.svg' %}" class="bg-svg">
+  <img src="{% static 'img/bg4.svg' %}" class="bg-svg">
+</div>
+
 <section class="hero-section">
   <div class="hero-content">
-    <h1>YOUR NEXT <span>BINGE</span>,<br>BRILLIANTLY ORGANIZED</h1>
+    <h1>
+  YOUR NEXT <span class="gradient-text-b">BINGE</span>,<br>
+  BRILLIANTLY ORGANIZED
+</h1>
+
     <p>
       Meet your new movie sidekick. Effortlessly track, discover, and share what you want to watch—
       no more endless scrolling. Dive into a smarter, more fun way to manage your watchlist and get
       spot-on recommendations, all in one place.
     </p>
-    <a href="{% url 'list' %}" class="frosted-btn">See More</a>
+    <a href="{% url 'list' %}" class="nav-link">See More</a>
   </div>
-</section>
 
-<div class="banner">Trending Movies</div>
+
 <div class="carousel-wrapper">
   <div class="carousel" id="carousel">
     <div class="carousel-track" id="track">
@@ -49,6 +59,10 @@
     </div>
   </div>
 </div>
+  <div class="trending-container">
+  <span class="nav-link">Trending Movies</span>
+  </div>
+</section>
 
 <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

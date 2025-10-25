@@ -96,3 +96,20 @@ document.querySelectorAll('.rating-form').forEach(form => {
 });
  });
 
+
+//svg
+const svgs = document.querySelectorAll('.bg-svg');
+let current = 0;
+
+setInterval(() => {
+  const next = (current + 1) % svgs.length;
+
+  // Start fading in the next SVG *before* fading out the current
+  svgs[next].classList.add('active');
+
+  // Delay removal of current to allow overlap
+  setTimeout(() => {
+    svgs[current].classList.remove('active');
+    current = next;
+  }, 500); // overlap duration (adjust if needed)
+}, 8000); // every 8 seconds
