@@ -9,8 +9,10 @@ SECRET_KEY = 'django-insecure-replace-this-with-your-own-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []  # Add your domain/ip when deploying
+import os
+ALLOWED_HOSTS =[
+"watchcraft.onrender.com"
+]  # Add your domain/ip when deploying
 
 
 # Application definition
