@@ -192,3 +192,31 @@ html, body {
   background-color: #a855f7;
   border-radius: 3px;
 }
+.error-msg {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+.message-box {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f5f0ff;
+}
+
+.message.success {
+  background-color: rgba(0, 128, 0, 0.2);
+  border-color: rgba(0, 128, 0, 0.4);
+  color: #aaffaa;
+}
+
+.message.error {
+  background-color: rgba(255, 0, 80, 0.1);
+  border-color: rgba(255, 0, 80, 0.3);
+  color: #ff0050;
+}
+

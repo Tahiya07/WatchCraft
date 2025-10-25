@@ -43,7 +43,7 @@
         <div class="rating-overlay">
           <form class="rating-form" data-movie-id="{{ movie.id }}">
             {% csrf_token %}
-            <label>Rate this:</label>
+            <label style="color: #dcd6f7">Rate this:</label>
             <div class="stars">
               {% for i in "12345"|make_list %}
                 <span class="star" data-value="{{ i }}">★</span>

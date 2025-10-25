@@ -46,11 +46,12 @@
     updateAngles();
 
 //Rating
-
 document.querySelectorAll('.rating-form').forEach(form => {
   const stars = form.querySelectorAll('.star');
   const ratingInput = form.querySelector('input[name="rating"]');
+  const messageBox = document.getElementById('message-box'); // Make sure this exists in your HTML
 
+  // Star click behavior
   stars.forEach(star => {
     star.addEventListener('click', () => {
       const value = star.getAttribute('data-value');
@@ -63,53 +64,58 @@ document.querySelectorAll('.rating-form').forEach(form => {
     });
   });
 
- form.addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Form submission
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  const movieId = form.getAttribute('data-movie-id');
-  const rating = ratingInput.value;
-  const comment = form.querySelector('textarea[name="comment"]').value.trim();
-  const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+    const movieId = form.getAttribute('data-movie-id');
+    const rating = ratingInput.value;
+    const comment = form.querySelector('textarea[name="comment"]').value.trim();
+    const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
 
-  console.log("Submitting comment:", comment); // ✅ Confirm it's captured
-
-  fetch(`/reviews/submit/${movieId}/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': csrfToken
-    },
-    body: JSON.stringify({ rating: rating, comment: comment })
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Thanks for rating!');
-      form.reset(); // Optional: clear form after submission
-    } else {
-      alert('Something went wrong.');
-    }
-  })
-  .catch(error => {
-    console.error("Error submitting review:", error);
-    alert("Submission failed.");
+    fetch(`/reviews/submit/${movieId}/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
+      },
+      body: JSON.stringify({ rating: rating, comment: comment })
+    })
+    .then(response => response.json().then(data => {
+      if (response.status === 403) {
+        showMessage(data.error || 'Please log in first to rate this movie.');
+      } else if (!response.ok) {
+        showMessage(data.error || 'Something went wrong.');
+      } else {
+        showMessage('Thanks for rating!');
+        form.reset();
+        stars.forEach(s => s.classList.remove('selected'));
+      }
+    }))
+    .catch(error => {
+      console.error("Error submitting review:", error);
+      showMessage('Submission failed. Please try again.');
+    });
   });
-});
- });
 
+  // Message display helper
+  function showMessage(text) {
+    if (messageBox) {
+      messageBox.textContent = text;
+      messageBox.style.display = 'block';
+      messageBox.classList.add('visible');
+    } else {
+      alert(text); // fallback if no message box exists
+    }
+  }
+});
 
 //svg
 const svgs = document.querySelectorAll('.bg-svg');
 let current = 0;
 
 setInterval(() => {
-  const next = (current + 1) % svgs.length;
-
-  // Start fading in the next SVG *before* fading out the current
-  svgs[next].classList.add('active');
-
-  // Delay removal of current to allow overlap
-  setTimeout(() => {
-    svgs[current].classList.remove('active');
-    current = next;
-  }, 500); // overlap duration (adjust if needed)
+  svgs[current].classList.remove('active');
+  current = (current + 1) % svgs.length;
+  svgs[current].classList.add('active');
 }, 8000); // every 8 seconds

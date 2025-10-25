@@ -11,7 +11,9 @@ SECRET_KEY = 'django-insecure-replace-this-with-your-own-secret-key'
 DEBUG = True
 import os
 ALLOWED_HOSTS =[
-"watchcraft.onrender.com"
+"watchcraft.onrender.com",
+    '127.0.0.1',
+    'localhost'
 ]  # Add your domain/ip when deploying
 
 
