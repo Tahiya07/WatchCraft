@@ -4,27 +4,32 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 # Initialize Chrome WebDriver
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
-# Open login page
-driver.get("http://127.0.0.1:8000/users/login/")
+# Open signup page
+driver.get("http://127.0.0.1:8000/users/signup/")
 
-# Wait until the username field appears
+# Wait until all required fields appear
 WebDriverWait(driver, 10).until(
     EC.presence_of_element_located((By.ID, "id_username"))
 )
+WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, "id_email"))
+)
+WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.ID, "id_password1"))
+)
 
-# Type username
+# Fill in the form fields
 driver.find_element(By.ID, "id_username").send_keys("Shazia")
+driver.find_element(By.ID, "id_email").send_keys("rabeashazia53@gmail.com")
+driver.find_element(By.ID, "id_password1").send_keys("12qwe123q#")
 
-# Optional: type password if needed
-# driver.find_element(By.ID, "id_password").send_keys("yourpassword")
+# Pause to visually confirm
+time.sleep(10)
 
-# Pause to see it work
-import time
-time.sleep(5)
-
-# Close
+# Close browser
 driver.quit()
