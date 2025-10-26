@@ -1,0 +1,20 @@
+<svg width="535" height="635" viewBox="0 0 535 635" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_185_56)">
+<rect width="535" height="635" rx="30" fill="black"/>
+<path d="M157.748 179.025C117.252 222.135 41.6145 359.087 54.4518 392.093C102.316 496.354 193.214 521.735 281.531 558.636C369.847 595.536 358.719 503.968 289.869 432.844C281.64 361.374 320.559 352.25 268.796 249.834C217.033 147.417 157.748 179.025 157.748 179.025Z" fill="#C58FFE" stroke="black"/>
+<path d="M88.7926 189.297C214.126 -44.2879 354.746 87.6512 409.39 182.819C476.689 245.767 493.107 286.89 505.331 364.89C435.298 401.384 388.507 398.309 274.516 297.413C150.876 321.516 99.7898 311.377 88.7926 189.297Z" fill="#7C30E0" stroke="black"/>
+<path d="M484.217 256.757C438.804 473.42 352.003 507.008 314.279 496.719C219.479 511.935 242.851 339.813 285.173 331.375C327.494 322.938 336.25 291.558 430.845 214.418C487.396 207.836 493.102 220.977 484.217 256.757Z" fill="#FF3FEC" stroke="black"/>
+<foreignObject x="-160" y="-160" width="855" height="955"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(80px);clip-path:url(#bgblur_1_185_56_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="160" d="M0 30C0 13.4314 13.4315 0 30 0H505C521.569 0 535 13.4315 535 30V605C535 621.569 521.569 635 505 635H30C13.4314 635 0 621.569 0 605V30Z" fill="white" fill-opacity="0.02"/>
+</g>
+<rect x="1" y="1" width="533" height="633" rx="29" stroke="url(#paint0_linear_185_56)" stroke-width="2"/>
+<defs>
+<clipPath id="bgblur_1_185_56_clip_path" transform="translate(160 160)"><path d="M0 30C0 13.4314 13.4315 0 30 0H505C521.569 0 535 13.4315 535 30V605C535 621.569 521.569 635 505 635H30C13.4314 635 0 621.569 0 605V30Z"/>
+</clipPath><linearGradient id="paint0_linear_185_56" x1="146.902" y1="-132.236" x2="300.956" y2="827.436" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="#666666"/>
+</linearGradient>
+<clipPath id="clip0_185_56">
+<rect width="535" height="635" rx="30" fill="white"/>
+</clipPath>
+</defs>
+</svg>

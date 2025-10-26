@@ -58,3 +58,8 @@ def submit_review_ajax(request, movie_id):
 
     print("Invalid request method")
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+
+
+

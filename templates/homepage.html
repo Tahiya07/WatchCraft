@@ -6,49 +6,68 @@
 {% block head %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
+
+  <div class="svg-backgrounds">
+    <img src="{% static 'img/bg-1.svg' %}" class="bg-svg active">
+    <img src="{% static 'img/bg2.svg' %}" class="bg-svg">
+    <img src="{% static 'img/bg3.svg' %}" class="bg-svg">
+    <img src="{% static 'img/bg4.svg' %}" class="bg-svg">
+  </div>
 <section class="hero-section">
-  <div class="hero-content">
-    <h1>YOUR NEXT <span>BINGE</span>,<br>BRILLIANTLY ORGANIZED</h1>
-    <p>
-      Meet your new movie sidekick. Effortlessly track, discover, and share what you want to watch—
-      no more endless scrolling. Dive into a smarter, more fun way to manage your watchlist and get
-      spot-on recommendations, all in one place.
-    </p>
-    <a href="{% url 'list' %}" class="frosted-btn">See More</a>
+
+  <div class="hero-inner">
+    <!-- Left: Hero Text -->
+    <div class="hero-content">
+      <h1>
+        YOUR NEXT <span class="gradient-text-b">BINGE</span>,<br>
+        BRILLIANTLY ORGANIZED
+      </h1>
+      <p>
+        Meet your new movie sidekick. Effortlessly track, discover, and share what you want to watch—
+        no more endless scrolling. Dive into a smarter, more fun way to manage your watchlist and get
+        spot-on recommendations, all in one place.
+      </p>
+      <a href="{% url 'movie-list' %}" class="nav-link">See More</a>
+      <div class="slide-label nav-link">
+        Slide to Explore <span class="arrow">&#8594;</span>
+      </div>
+    </div>
+
+    <!-- Right: Carousel -->
+    <div class="carousel-wrapper">
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="track">
+          {% for movie in trending_movies %}
+          <div class="carousel-item">
+            <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster"
+                 onerror="this.src='https://via.placeholder.com/280x400?text=No+Poster';">
+            <div class="rating-overlay">
+              <form class="rating-form" data-movie-id="{{ movie.id }}">
+                {% csrf_token %}
+                <label style="color: #dcd6f7">Rate this:</label>
+                <div class="stars">
+                  {% for i in "12345"|make_list %}
+                    <span class="star" data-value="{{ i }}">★</span>
+                  {% endfor %}
+                </div>
+                <textarea name="comment" placeholder="Leave a review..." rows="2"></textarea>
+                <input type="hidden" name="rating" value="0">
+                <button type="submit">Submit</button>
+              </form>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="banner">Trending Movies</div>
-<div class="carousel-wrapper">
-  <div class="carousel" id="carousel">
-    <div class="carousel-track" id="track">
-      {% for movie in trending_movies %}
-      <div class="carousel-item">
-        <img src="{{ movie.poster_url }}" alt="{{ movie.title }} Poster"
-     onerror="this.src='https://via.placeholder.com/280x400?text=No+Poster';">
-        <div class="rating-overlay">
-          <form class="rating-form" data-movie-id="{{ movie.id }}">
-            {% csrf_token %}
-            <label>Rate this:</label>
-            <div class="stars">
-              {% for i in "12345"|make_list %}
-                <span class="star" data-value="{{ i }}">★</span>
-              {% endfor %}
-            </div>
-            <textarea name="comment" placeholder="Leave a review..." rows="2"></textarea>
-            <input type="hidden" name="rating" value="0">
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
 
 <script src="{% static 'js/main.js' %}"></script>
 {% endblock %}

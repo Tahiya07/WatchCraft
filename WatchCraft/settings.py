@@ -9,8 +9,12 @@ SECRET_KEY = 'django-insecure-replace-this-with-your-own-secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []  # Add your domain/ip when deploying
+import os
+ALLOWED_HOSTS =[
+"watchcraft.onrender.com",
+    '127.0.0.1',
+    'localhost'
+]  # Add your domain/ip when deploying
 
 
 # Application definition
@@ -41,7 +45,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'watchcraft.urls'
+ROOT_URLCONF = 'WatchCraft.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +63,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'watchcraft.wsgi.application'
+WSGI_APPLICATION = 'WatchCraft.wsgi.application'
 
 
 # Database

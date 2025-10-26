@@ -1,18 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block title %}About Us - WatchCraft{% endblock %}
 
+{% block head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="container mx-auto py-16 px-4">
-    <h1 class="text-4xl font-bold gradient-text mb-6">About Us</h1>
-    <p class="text-gray-400 mb-4">
-        WatchCraft is a platform to explore movies, bookmark your favorites, and get AI-powered recommendations.
-    </p>
-    <p class="text-gray-400 mb-4">
-        Our mission is to help movie enthusiasts discover films they'll love and connect through reviews and ratings.
-    </p>
-    <p class="text-gray-400">
-        Founded in 2025, WatchCraft aims to provide a seamless and enjoyable experience for all movie lovers.
-    </p>
-</section>
+<div class="svg-background">
+  <img src="{% static 'img/about-us.svg' %}" alt="SVG Background">
+</div>
 {% endblock %}
