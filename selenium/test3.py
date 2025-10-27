@@ -10,38 +10,58 @@ import time
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 try:
-    # Open login page
+    # --- STEP 1: LOGIN ---
     driver.get("http://127.0.0.1:8000/users/login/")
 
-    # Wait until the username and password fields appear
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "id_username"))
-    )
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "id_password"))
-    )
+    # Wait for login fields
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "id_username")))
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "id_password")))
 
-    # Fill in the login form
+    # Fill in login details
     driver.find_element(By.ID, "id_username").send_keys("Shaima")
     driver.find_element(By.ID, "id_password").send_keys("123qweas")
 
-    # Click the login button (you can also use name="login" or another selector if needed)
-    driver.find_element(By.XPATH, '//button[@type="submit"]').click()
+    # Click the login button
+    driver.find_element(By.XPATH, "//button[@type='submit']").click()
+    print("Login button clicked... waiting for redirect")
 
-    # Wait for redirect after successful login (adjust URL to your actual homepage)
-    WebDriverWait(driver, 10).until(
-        EC.url_changes("http://127.0.0.1:8000/users/login/")
-    )
+    # Wait until redirected to home page
+    WebDriverWait(driver, 10).until(EC.url_contains("/"))
+    print("Logged in successfully and redirected to homepage")
 
-    # Verify if redirected to home/dashboard page
-    current_url = driver.current_url
-    if "home" in current_url or current_url == "http://127.0.0.1:8000/":
-        print("Login successful! Redirected to:", current_url)
+    # --- STEP 2: RATING SECTION ---
+    # Wait until rating stars are visible on the homepage
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "star")))
+
+    # Click on a 5-star rating
+    star_to_click = driver.find_element(By.XPATH, "//span[@class='star' and @data-value='5']")
+    star_to_click.click()
+    print("Clicked 5-star rating")
+
+    # Wait for comment box
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "comment")))
+
+    # Enter a review comment
+    comment_box = driver.find_element(By.NAME, "comment")
+    comment_box.clear()
+    comment_box.send_keys("Fantastic service! Really satisfied with the experience.")
+
+    # Click the Submit button
+    submit_button = driver.find_element(By.XPATH, "//button[@type='submit']")
+    submit_button.click()
+    print("Clicked the Submit button")
+
+    # --- STEP 3: VERIFY SUCCESS ---
+    time.sleep(5)
+    page_source = driver.page_source
+
+    if "Thank you" in page_source or "successfully" in page_source:
+        print("Rating submitted successfully and confirmation message found!")
     else:
-        print("Login did not redirect as expected. Current URL:", current_url)
+        print("Rating submitted, but confirmation message not detected.")
 
-    # Pause for visual confirmation
-    time.sleep(10)
+    # Pause to visually confirm
+    time.sleep(5)
 
 finally:
     # Close browser
