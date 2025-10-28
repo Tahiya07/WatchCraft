@@ -27,7 +27,7 @@ try:
 
     # Wait for home redirect
     WebDriverWait(driver, 10).until(EC.url_contains("/"))
-    print("✅ Logged in successfully!")
+    print(" Logged in successfully!")
 
     # --- STEP 2: CLICK 'SEE MORE' BUTTON ---
     # Wait until the See More button is visible
@@ -35,7 +35,7 @@ try:
         EC.element_to_be_clickable((By.XPATH, "//a[contains(text(),'See More')]"))
     )
     see_more_btn.click()
-    print("➡️ Clicked 'See More' button")
+    print(" Clicked 'See More' button")
 
     # Pause for visual confirmation
     time.sleep(5)
